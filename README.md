@@ -18,11 +18,11 @@ When finished, the results will be stored in `output/results.txt`.
 
 If you'd like to change the dictionary or the list of search strings, simply upload those files to the `input` directory and then update the command appropriately.
 
-# Discussion of the program
+# Discussion
 
 In reading the Google Code Competition problem and analysis, I realised that the modular arithmetic-based solution scheme is a bit out of scope for the task at hand. (And what's more, their specified parameters haven't been supplied here.)
 
-So instead, I opted to meet somewhere in the middle, and took care to mitigate possible cases of poor scaling by:
+So instead, I opted to meet somewhere in the middle, and took care to mitigate possible causes of poor scaling by:
 
 -   Considering one search string `S` and one dictionary word `D` at a time.
 -   Running across most letters in `S` and checking whether they matched the first letter of `D`.
