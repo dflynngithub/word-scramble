@@ -13,7 +13,14 @@ import click  # Library for input and output
 @click.option("--dictionary", required=True, help="Name of the dictionary file.")
 @click.option("--input", required=True, help="A series of strings to search for words within.")
 def main(dictionary, input):  # Main program
-    pass
+
+    # Import the dictionary file into an array of words
+    with open(dictionary) as f:
+        dictionary_words = f.read().splitlines()
+
+    # Import the search string input file into an array of words
+    with open(input) as f:
+        search_strings = f.read().splitlines()
 
 
 # When to actually run the main program
