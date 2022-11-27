@@ -18,6 +18,24 @@ dictionary_import_error = "In main: dictionary file does not exist! File name = 
 input_import_error = "In main: search string input file does not exist! File name = {input}"
 
 
+def make_frequency_array(letters: list[str]) -> list[int]:
+    """
+    Map a list of letters (characters within a word) onto a frequency array,
+    which counts the number of occurrences of each letter in that word.
+    """
+
+    # Initialise an empty frequency array
+    freq_array = [0]*26
+
+    # Loop over each letter and update the frequency array,
+    # using the in-built 'ord' method and translating by 97
+    for letter in letters:
+        i = ord(letter)-97
+        freq_array[i] += 1
+
+    return freq_array
+
+
 @click.command()
 @click.option("--dictionary", required=True, help="Name of the dictionary file.")
 @click.option("--input", required=True, help="A series of strings to search for words within.")
@@ -54,6 +72,9 @@ def main(dictionary, input):  # Main program
 
     # Initialise an array of results
     results = [0]*T
+
+    A = make_frequency_array(['a', 'a', 'b', 'd', 'z'])
+    print(A)
 
     # Having identified all matching dictionary words for each search string,
     # print results to an output file
