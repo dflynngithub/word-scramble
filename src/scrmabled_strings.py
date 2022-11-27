@@ -8,22 +8,49 @@ Results are printed to an output file.
 
 import click  # Library for input and output
 import logging  # Library for error/debug/info logging
+from os.path import exists  # Assists us to check whether files exist
+
+# Specify a log file
+logging.basicConfig(filename="output/scrmabled_strings.log",
+                    encoding="utf-8", level=logging.DEBUG)
+
+dictionary_import_error = "In main: dictionary file does not exist! File name = {dictionary}"
+input_import_error = "In main: search string input file does not exist! File name = {input}"
 
 
 @click.command()
 @click.option("--dictionary", required=True, help="Name of the dictionary file.")
 @click.option("--input", required=True, help="A series of strings to search for words within.")
 def main(dictionary, input):  # Main program
+    # Error handling in case the nominated dictionary file does not exist
+    if (not exists(dictionary)):
+        msg = dictionary_import_error.format(dictionary=dictionary)
+        logging.error(msg)
+        raise Exception(msg)
 
     # Import the dictionary file into an array of words
     logging.info("Importing dictionary file "+dictionary)
     with open(dictionary) as f:
         dictionary_words = f.read().splitlines()
 
+    # The number of dictionary words
+    D = len(dictionary_words)
+    logging.info("Number of dictionary words: D = "+str(D))
+
+    # Error handling in case the nominated dictionary file does not exist
+    if (not exists(input)):
+        msg = input_import_error.format(input=input)
+        logging.error(msg)
+        raise Exception(msg)
+
     # Import the search string input file into an array of words
     logging.info("Importing search string input file "+input)
     with open(input) as f:
         search_strings = f.read().splitlines()
+
+    # The number of search strings
+    T = len(search_strings)
+    logging.info("Number of search strings: T = "+str(T))
 
 
 # When to actually run the main program
