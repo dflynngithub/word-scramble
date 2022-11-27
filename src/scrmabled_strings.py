@@ -14,8 +14,10 @@ from os.path import exists  # Assists us to check whether files exist
 logging.basicConfig(filename="output/scrmabled_strings.log",
                     encoding="utf-8", level=logging.DEBUG)
 
+# A template for possible errors
 dictionary_import_error = "In main: dictionary file does not exist! File name = {dictionary}"
 input_import_error = "In main: search string input file does not exist! File name = {input}"
+word_match_size_error = "Error in word_matches_in_string: expect search string to be bigger than dictionary word."
 
 
 def word_matches_in_string(search_string: str, dictionary_word: str) -> bool:
@@ -30,6 +32,11 @@ def word_matches_in_string(search_string: str, dictionary_word: str) -> bool:
     # Length of search string and of dictionary word
     N = len(search_string)
     M = len(dictionary_word)
+
+    # Input validation: the search string must be at least as big as the dictionary word
+    if M > N:
+        logging.error(word_match_size_error)
+        raise Exception(word_match_size_error)
 
     # Split the search string and dictionary word into letter lists
     string_letters = list(search_string)
