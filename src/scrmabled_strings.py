@@ -85,6 +85,7 @@ def make_frequency_array(letters: list[str]) -> list[int]:
 @click.option("--dictionary", required=True, help="Name of the dictionary file.")
 @click.option("--input", required=True, help="A series of strings to search for words within.")
 def main(dictionary, input):  # Main program
+
     # Error handling in case the nominated dictionary file does not exist
     if (not exists(dictionary)):
         msg = dictionary_import_error.format(dictionary=dictionary)
@@ -118,8 +119,15 @@ def main(dictionary, input):  # Main program
     # Initialise an array of results
     results = [0]*T
 
-    print(word_matches_in_string(
-        "aapxjdnrbtvldptfzbbdbbzxtndrvjblnzjfpvhdhhpxjdnrbt", "axpaj"))
+    # Find the number of scrambled dictionary word matches for each search string
+    for idx, search_string in enumerate(search_strings):
+        for dictionary_word in dictionary_words:
+
+            # Test whether this dictionary word is contained in the search string
+            is_match = word_matches_in_string(search_string, dictionary_word)
+
+            # For each successful match, add one to the counter
+            results[idx] += int(is_match)
 
     # Having identified all matching dictionary words for each search string,
     # print results to an output file
