@@ -6,8 +6,13 @@ strings, then identifies all of the occurences of dictionary words
 Results are printed to an output file.
 """
 
+import click  # Library for input and output
 
-def main():  # Main program
+
+@click.command()
+@click.option("--dictionary", required=True, help="Name of the dictionary file.")
+@click.option("--input", required=True, help="A series of strings to search for words within.")
+def main(dictionary, input):  # Main program
     pass
 
 
