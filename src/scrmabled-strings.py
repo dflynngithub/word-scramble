@@ -1,5 +1,25 @@
 # ./scrmabled-strings
 
+# File input
+dict_name = 'dictionary.inp'
+with open('input/'+dict_name) as f:
+    dictionary = f.read().splitlines()
+
+for word in dictionary:
+    for letter in word:
+        print('word: '+word+' letter: '+letter)
+
+input_name = 'input.inp'
+with open('input/'+input_name) as f:
+    input_passage = f.readline()
+
+# File output
+number_of_matches = 5
+output_name = 'output.out'
+with open('output/'+output_name, 'w') as f:
+    f.write(str(number_of_matches))
+
+
 def char_to_ord(c: str) -> int:
     """
     Converts a character `c` to an integer value as in the ASCII table.
