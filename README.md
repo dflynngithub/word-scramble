@@ -2,7 +2,13 @@
 
 This repository contains a Python file which reads a dictionary and an input file (which contains a list of search strings), determines how many of the dictionary words (and their scrambled variants) match to each search string, and saves the results to an output file. The example which was outlined in the instructions has been included in the repsitory as well.
 
-To run the program directly, navigate to the root directory and run the command:
+To run the program directly, you may first need to install a Python library:
+
+```
+pip3 install click
+```
+
+Then you should be able to navigate to the root directory and run the command:
 
 ```
 python3 src/scrmabled_strings.py --dictionary input/dictionary.inp --input input/input.inp
@@ -11,8 +17,6 @@ python3 src/scrmabled_strings.py --dictionary input/dictionary.inp --input input
 When finished, the results will be stored in `output/results.txt`.
 
 If you'd like to change the dictionary or the list of search strings, simply upload those files to the `input` directory and then update the command appropriately.
-
-I have provided a Dockerfile as well, just because that looked like a pretty easy stretch goal to meet! I haven't built it, because the instructions say that you're happy to do so. I think you'll find everything you need in `Dockerfile` and `requirements.txt`, in the relative root directory.
 
 # Discussion of the program
 
@@ -40,4 +44,10 @@ There are some extra little tools that I've wielded here, which are fairly stand
 -   The `logging` library, which comes for free with my Python installation, and which allows me to log info, debug and error information to an external file called `output/scrmabled_strings.log`.
 -   The `os.path` library, which just allows me to check whether the input files actually exist and then handle errors accordingly.
 
-I chose not to write unit tests here. (I was slightly perplexed by the first item under `Deliverable` in the instructions, but I suspect that refers to Pepperstone's internal tests that check the functionality of my program.) While I did _start_ to write unit tests, I soon realised that my logging and exception handling basically performed the same job for this fairly straightforward scenario. Hopefully I haven't interpreted the situation incorrectly!
+# Stretch goals
+
+-   I've provided a Dockerfile for this program, just because that looked like a pretty easy stretch goal to meet! I haven't built it, because the instructions say that you're happy to do so. I think you'll find everything you need in `Dockerfile` and `requirements.txt`, in the relative root directory.
+-   In a two-birds-one-stone maneuver, I've just attached this README directly to the Git repository, which should serve as enough documentation.
+-   Logging for general info and errors.
+-   Error handling and exception raising, which can usually be found alongside the logging.
+-   I chose not to write unit tests here. (I was slightly perplexed by the first item under `Deliverable` in the instructions, but I suspect that refers to Pepperstone's internal tests that check the functionality of my program.) While I did _start_ to write unit tests, I soon realised that my logging and exception handling basically performed the same job for this fairly straightforward scenario. Hopefully I haven't interpreted the situation incorrectly!
