@@ -1,4 +1,4 @@
-# To use the program
+# Running the `scrmabled_strings` program
 
 This repository contains a Python file which reads a dictionary and an input file (which contains a list of search strings), determines how many of the dictionary words (and their scrambled variants) match to each search string, and saves the results to an output file. The example which was outlined in the instructions has been included in the repsitory as well.
 
@@ -11,6 +11,8 @@ python3 src/scrmabled_strings.py --dictionary input/dictionary.inp --input input
 When finished, the results will be stored in `output/results.txt`.
 
 If you'd like to change the dictionary or the list of search strings, simply upload those files to the `input` directory and then update the command appropriately.
+
+I have provided a Dockerfile as well, just because that looked like a pretty easy stretch goal to meet! I haven't built it, because the instructions say that you're happy to do so. I think you'll find everything you need in `Dockerfile` and `requirements.txt`, in the relative root directory.
 
 # Discussion of the program
 
@@ -30,6 +32,7 @@ Areas for possible improvement:
 -   Parallelise the process, so that processors each recieve a search string and send back the number of dictionary word matches.
 -   Pursue a character-to-integer mapping approach with modular arithmetic and chosen parameters, like the Google Code Competition suggests.
 -   Additional logging which provides metadata about how many matches have been found, and potentially the memory and computer time costs associated with the program.
+-   More data validation around the program requirements, eg. check that any dictionary word contains 2-105 letters.
 
 There are some extra little tools that I've wielded here, which are fairly standard:
 
