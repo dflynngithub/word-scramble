@@ -7,6 +7,7 @@ Results are printed to an output file.
 """
 
 import click  # Library for input and output
+import logging  # Library for error/debug/info logging
 
 
 @click.command()
@@ -15,10 +16,12 @@ import click  # Library for input and output
 def main(dictionary, input):  # Main program
 
     # Import the dictionary file into an array of words
+    logging.info("Importing dictionary file "+dictionary)
     with open(dictionary) as f:
         dictionary_words = f.read().splitlines()
 
     # Import the search string input file into an array of words
+    logging.info("Importing search string input file "+input)
     with open(input) as f:
         search_strings = f.read().splitlines()
 
