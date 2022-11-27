@@ -52,6 +52,16 @@ def main(dictionary, input):  # Main program
     T = len(search_strings)
     logging.info("Number of search strings: T = "+str(T))
 
+    # Initialise an array of results
+    results = [0]*T
+
+    # Having identified all matching dictionary words for each search string,
+    # print results to an output file
+    logging.info("Finished matching search strings with dictionary words")
+    with open("output/results.txt", "w") as r:
+        for idx, matches in enumerate(results):
+            r.write("Case #"+str(idx+1)+": "+str(matches))
+
 
 # When to actually run the main program
 if __name__ == "__main__":
